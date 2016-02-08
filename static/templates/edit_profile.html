@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+	<h1 class="bold"> {{ username }} <h1>
+	<p class="small" style = 'text-align:center;'>Edit profile here</p>
+
+
+	{% if messages %}
+      <div class='row'>
+        <div class="col-sm-6 col-sm-offset-3">
+          {% for message in messages %} 
+          <p {% if message.tags == 'error'%} class="alert alert-info"{% endif %}>{{ message }}</p>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+
+	<form action='' method="post" name="UsignupForm" style = 'text-align:center;' enctype="multipart/form-data" >
+		<br>
+{% csrf_token %}
+    <p class="lead" > Profile Photo :<br><br>
+            {{ form.docfile }}
+            <br><br>
+		<p class="lead"> Reset Password : leave blank if don't want change. <br>
+			<input type="text" class='' name="resetpw_input"></p>
+		<p class="lead"> Confirm Password : <br>
+			<input type="text" class='' name="confirmpw_input"></p>
+		<p class="lead"> User Name : <br>
+			<input type="text" class='' name="user_name_input" value="{{ nick_name }}"></p>
+		<p class="lead"> location : <br>
+			<input type="text" class='' name="location" ></p>
+		<p class="lead"> descrition : <br>
+			<textarea type="text" rows="4" cols="30" class='' name="description" ></textarea></P><br>
+		<input type='submit' class='btn btn-default' value='Save'>
+	</form>
+    
+{% endblock %}    

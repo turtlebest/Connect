@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<body  background= 'http://127.0.0.1:8000/media/Back.jpg'>
+<br><br><br>
+  <div class="home">
+      <div class="container" style = 'text-align:center' >
+        <h1>Connect!</h1>
+      </div>
+    </div><br><br><br>
+ <div class='row' style = 'text-align:center'>
+    <form action='' method="post" name="loginForm">
+  		{% csrf_token %}
+      <p class="lead">
+      	<input type="text" class='' name="username_input" placeholder='user name'>
+      </p>  
+      <p class="lead">  
+      	<input type="password" class='' name="password_input" placeholder='password'>
+      </p>  
+      <p class="lead">  
+        <input type='submit' class='btn btn-default' value = 'login'>
+      </p>
+  	</form>
+  </div>   
+   <div class='row' style = 'text-align:center'>
+    <p><a class="btn btn-default" href='{% url "create_account"%}' role="button">Create new account</a></p>
+  </div> 
+<br><br><br>
+ <!--     <div class="col-md-4">
+                <h1>
+                    Join Now
+                </h1>
+                <form method='POST' action = ''>{% csrf_token %}
+                    {{ form.as_p }}
+                    <input type= 'submit' class = 'btn btn-success btn-block'>
+                </form>
+        </div>-->
+</body>
+{% endblock content %}

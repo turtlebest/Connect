@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+  <h1 class="bold"> {{ username }} <h1>
+  <p class="small" style = 'text-align:center;'>Edit profile here</p>
+
+
+  {% if messages %}
+      <div class='row'>
+        <div class="col-sm-6 col-sm-offset-3">
+          {% for message in messages %} 
+          <p {% if message.tags == 'error'%} class="alert alert-info"{% endif %}>{{ message }}</p>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+
+  <form action='' method="post" name="UsignupForm" style = 'text-align:center;'>
+    <br>
+{% csrf_token %}
+    <p class="lead"> Cricle name:<br>
+      <input type="text" class='' name="newcircle_input"></p>
+    <input type='submit' class='btn btn-default' value='Save'>
+  </form>
+    
+{% endblock %}    

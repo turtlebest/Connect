@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="bold"> {{ username }} <h1>
+  <p class="small">Add friend to circle here</p>
+
+
+  {% if messages %}
+      <div class='row'>
+        <div class="col-sm-6 col-sm-offset-3">
+          {% for message in messages %} 
+          <p {% if message.tags == 'error'%} class="alert alert-info"{% endif %}>{{ message }}</p>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+
+  <form action='' method="post" name="UsignupForm" >
+{% csrf_token %}
+   <div class="dropdown">
+      <label class="lead"> Add to circle :</label><br>
+              <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="margin-top: -30px;">  <span class="caret"></span></a>
+
+              <select name="circle">
+                <option value="circle" selected>selected circle</option>
+                {% for eachrow in list_circle %} 
+                  <option value={{eachrow.0}} >{{eachrow.0}}</option>  
+                {% endfor %}
+
+              </select>
+        </div>
+
+    <input type='submit' class='btn btn-default' value='Save'>
+  </form>
+    
+{% endblock %}    

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+		<h1>Friends:</h1>
+<form action='' method="post" name="createpostform">
+		{% csrf_token %}
+
+      {% for eachline in friend_list %}         
+        <div class="col-xs-4">
+        <p></p> 
+        <h4><a href='/friend-uprofile/{{eachline.0}}'><img id = "Image1" src="{{ eachline.1 }}" style = 'text-align:right' height="40" width="40" > {{ eachline.0 }}</a><br>
+       </div>
+       {% endfor %}
+     <br><br>
+
+		<h1>Circle:</h1>
+		{% for eachrow in circle_list %}
+		<h4><a href='/circle-profile/{{eachrow.0}}'>{{ eachrow.0 }}</a><br>
+		</h4>
+
+		{% endfor %}
+    </form>		
+
+<form action='' method="post" name="createpostform">
+		{% csrf_token %}
+
+  
+      <div class="container">         
+        <p><a class="btn btn-default" href='{% url "create_circle"%}' role="button">Create circle</a></p>
+      </div>
+    </form>
+        <h1>Friend Request:(click to respose request)</h1>
+        {% for eachrow in pending_list %}
+ 		<h5><a href='/friend-request/{{eachrow.0}}' method="reply" >{{ eachrow.0 }} send you request</a></p>   
+ 		{% endfor %}
+{% endblock %}

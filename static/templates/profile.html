@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{%block jumbotron %}
+
+<div class="jumbotron">
+      <div class="container">
+
+      <iframe
+    width="350"
+    height="350"
+    align="right" 
+    frameborder="5" style="border:0"
+    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyD3-d57yf5a6QeH185sUmDQiVBTZSGPClw
+      &q={{location}}
+      &attribution_source=Google+Maps+Embed+API
+      &attribution_web_url=http://www.butchartgardens.com/
+      &attribution_ios_deep_link_id=comgooglemaps://?daddr=Butchart+Gardens+Victoria+BC">
+  </iframe>
+
+        <p><img id = "Image1" src="{{ url }}" style = 'text-align:right' height="100" width="100" ></p>
+        <h1>{{ name }} </h1>
+        <p lingdex="0" style="color: rgb(207, 38, 38);">{{ uid }}</p>
+		 <p lingdex="0" style="color: rgb(207, 38, 38);">{{profile}}</p>
+        <p><a class="btn btn-primary btn-lg" href='{% url "edit_profile"%}' role="button">Edit profile &raquo;</a></p>
+      </div>
+
+    </div>
+{%endblock%}
+
+{% block content %}
+
+      {% for eachline in photoinfo %}         
+        <div class="row" style = 'text-align:center'>
+          <span style="font-size: 1.50em">
+          <p><a href='/friend-uprofile/{{eachline.0}}'><img id = "Image1" src="{{ eachline.4 }}" style = 'text-align:right' height="40" width="40" > {{ eachline.3 }}</a></p>
+          </span>
+          <p><img id = "Image1" src="{{ eachline.1 }}" ></p>
+          <p>{{eachline.2}} </p> 
+          <p>Location: {{eachline.5}} </p> 
+       </div><br><br>
+       {% endfor %}
+
+       
+
+
+      <div class="row" style = 'text-align:center'>
+      {% for eachline in textinfo %}
+        <div class="row">
+          <span style="font-size: 1.50em">
+           <p><a href='/friend-uprofile/{{eachline.0}}'><img id = "Image1" src="{{ eachline.3 }}" style = 'text-align:right' height="40" width="40" > {{ eachline.2 }}</a></p>  
+           </span>
+             <p>{{ eachline.1 }} </p>
+             <p>Location: {{eachline.4}} </p> 
+          </div><br><br>
+      {% endfor %}
+
+        
+      </div>
+{% endblock content %}    

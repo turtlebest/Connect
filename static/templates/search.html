@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Search Result</h1>
+		<h3>POST:</h3>
+<form action='' method="post" name="createpostform">
+		{% csrf_token %}
+    <div class="row" style = 'text-align:center'>
+      {% for eachline in textinfo %}
+        <div class="row">
+          <span style="font-size: 1.50em">
+           <p><a href='/friend-uprofile/{{eachline.0}}'><img id = "Image1" src="{{ eachline.3 }}" style = 'text-align:right' height="40" width="40" > {{ eachline.2 }}</a></p>  
+           </span>
+             <p>{{ eachline.1 }} </p>
+          </div><br><br>
+      {% endfor %}
+
+      {% for eachline in photoinfo %}         
+        <div class="row" style = 'text-align:center'>
+          <span style="font-size: 1.50em">
+          <p><a href='/friend-uprofile/{{eachline.0}}'><img id = "Image1" src="{{ eachline.4 }}" style = 'text-align:right' height="40" width="40" > {{ eachline.3 }}</a></p>
+          </span>
+          <p><img id = "Image1" src="{{ eachline.1 }}" ></p>
+          <p>{{eachline.2}} </p> 
+       </div><br><br>
+       {% endfor %}
+        
+      </div>
+      
+
+      
+    </form>		
+
+
+
+		<h3>Users:</h3>
+      {% for eachline in people_list %}         
+        <div class="col-xs-4">
+        <p></p> 
+        <h4><a href='/friend-uprofile/{{eachline.0}}'><img id = "Image1" src="{{ eachline.1 }}" style = 'text-align:right' height="40" width="40" > {{ eachline.0 }}</a><br>
+       </div>
+       {% endfor %}
+     <br><br>
+
+
+{% endblock %}

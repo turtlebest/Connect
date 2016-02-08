@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>People in circle</h1>
+		{% csrf_token %}
+      {% for eachline in people_list %}         
+        <div class="col-xs-4">
+        <p></p> 
+        <h4><a href='/friend-uprofile/{{eachline.2}}'><img id = "Image1" src="{{ eachline.1 }}" style = 'text-align:right' height="40" width="40" > {{ eachline.0 }}</a><br>
+       </div>
+       {% endfor %}
+     <br><br>
+
+
+{% endblock %}

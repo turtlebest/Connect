@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class='col-sm-12' style = 'text-align:center;'>
+                <h1>
+                    
+                </h1>
+     <li><a href='{% url "create_account"%}'>Back to create the new account <span class="sr-only">(current)</span></a></li>
+      <li><a href='{% url "home"%}'>Back to login page <span class="sr-only">(current)</span></a></li>
+</div>
+{% endblock content %}
